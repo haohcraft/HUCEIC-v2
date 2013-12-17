@@ -3,6 +3,6 @@ footer#footer.clearfix
 		div.three-fourth
 			nav#footer-nav.clearfix
 				ul
-					// - each nav in #{navs}
-						//- li
-							//- a(href=#{nav.path})#{nav.name}
+					- each nav in #{PageDate.navs}
+						li
+							a(href=#{nav.path})
