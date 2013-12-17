@@ -1,0 +1,23 @@
+[
+	{
+		"name": "Home",
+		"description": "home",
+		"path": "/"
+	},
+	{
+		"name": "About",
+		"description":"about",
+		"path": "/about"
+	},
+	{
+		"name": "Events",
+		"description": "events",
+		"path":"/events"
+	},
+	{
+		"name": "Mainling List",
+		"description":"mainlingList",
+		"path": "mainling-ist"
+	}
+
+]
