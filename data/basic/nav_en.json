@@ -1,21 +1,21 @@
 [
 	{
-		"name": "Home",
+		"navName": "Home",
 		"description": "home",
 		"path": "/"
 	},
 	{
-		"name": "About",
+		"navName": "About",
 		"description":"about",
 		"path": "/about"
 	},
 	{
-		"name": "Events",
+		"navName": "Events",
 		"description": "events",
 		"path":"/events"
 	},
 	{
-		"name": "Mainling List",
+		"navName": "Mainling List",
 		"description":"mainlingList",
 		"path": "mainling-ist"
 	}

@@ -1,8 +1,21 @@
+// Some variables used in the jade
+- var navs = PageData.navs
+- var company = PageData.company
+
+
 footer#footer.clearfix
 	div.container
 		div.three-fourth
 			nav#footer-nav.clearfix
 				ul
-					- each nav in #{PageDate.navs}
+					- navs.forEach(function(nav){
 						li
-							a(href=#{nav.path})
+							a(href=nav.path) #{nav.navName}
+					- })
+			ul.contact-info
+				li.address #{company.address}
+				li.email
+					a(href="mailto:#{company.email}") #{company.email}
+				li.phone #{company.phone}
+				
+					
