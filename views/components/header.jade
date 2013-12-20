@@ -1,2 +1,19 @@
+// Some variables used in the jade
+- var navs = PageData.navs
+
 header#header.container.clearfix
-	p this is the header
+	a#logo(href='/')
+		img(alt="HUCEIC logo", src='/img/logo_header.png')
+	nav#main-nav
+		ul
+			- navs.forEach(function(nav){
+				li
+					a(href=nav.path, data-description=nav.description) #{nav.navName}
+			- })
+		select.responsive-nav
+			option(value selected) Menu
+			- navs.forEach(function(nav){
+				option(value=nav.path) #{nav.navName}	
+			-	})
+			
+	

@@ -3,6 +3,8 @@
  * GET home page.
  */
 
-exports.index = function(req, res){
-  res.render('index');
+module.exports = function(req, res, next){
+  res.render('home', {
+  	app: 'home'
+  });
 };

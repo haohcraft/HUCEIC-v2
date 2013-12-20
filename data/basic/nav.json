@@ -1,22 +1,22 @@
 [
 	{
 		"navName": "Home",
-		"description": "home",
+		"description": "主页",
 		"path": "/"
 	},
 	{
 		"navName": "About",
-		"description":"about",
+		"description":"关于",
 		"path": "/about"
 	},
 	{
 		"navName": "Events",
-		"description": "events",
+		"description": "活动",
 		"path":"/events"
 	},
 	{
 		"navName": "Mainling List",
-		"description":"mainlingList",
+		"description":"联系",
 		"path": "mainling-ist"
 	}
 

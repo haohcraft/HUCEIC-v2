@@ -1,6 +1,7 @@
 // Some variables used in the jade
 - var navs = PageData.navs
 - var company = PageData.company
+- var social = company.socialMedia
 
 
 footer#footer.clearfix
@@ -22,6 +23,10 @@ footer#footer.clearfix
 			span.title Stay connected
 			ul.social-links
 				li.facebook
-					a(href="#") Facebook
+					a(href=social.facebook, target="_blank") Facebook
+				li.weibo
+					a(href=social.weibo) Weibo
+				li.renren
+					a(href=social.renren, target="_blank") Renren
 				
 					

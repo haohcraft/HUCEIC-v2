@@ -1,0 +1,11 @@
+extends layout
+
+
+
+block content
+	// Some variables used in the jade
+	- var company = PageData.company
+
+	section#content.clearfix
+		div.container
+			h2.slogan.align-center(data-slogan=' '+ company.longName) Welcom to </br>

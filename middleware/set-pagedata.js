@@ -9,7 +9,7 @@ module.exports = function(req, res, next){
 	res.locals.PageData = res.locals.PageData || {};
 
 	var Company = require(baseUrl + "company.json");
-	var Navs = require(baseUrl + "nav_en.json")
+	var Navs = require(baseUrl + "nav.json")
 	
 
 	// store the company's basic info

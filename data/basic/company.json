@@ -1,5 +1,17 @@
 {
 	"phone": "(000) 000 000",
 	"email": "haohcracf@gmail.com",
-	"address": "Cambridge, MA"
+	"address": "Cambridge, MA",
+	"shortName": "HUCEIC",
+	"longName": "Harvard US-China Economic Interaction Council",
+
+	"socialMedia": {
+		"renren":"http://page.renren.com/601826446",
+		"facebook":"https://www.facebook.com/groups/165190433670336/",
+		"weibo":"#",
+		"linkedin":"#"
+	}
+
+
+
 }
