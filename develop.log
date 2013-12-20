@@ -1,0 +1,5 @@
+#Initialize ExpressJS
+express --css stylus . //using jade/stylus
+
+#organize the structure of the front end page
+

@@ -1,2 +1,4 @@
+.DS_Store
 node_modules
-develop.log
+public/css/**/*.css
+public/css/*.css

@@ -22,9 +22,7 @@ app.configure(function(){
   app.use(stylus.middleware({
     src: __dirname + '/public',
     compile: function compile(str, path) {
-      return 
-      console.log('compile the stylus');
-      stylus(str)
+      return stylus(str)
         .set('filename', path)
         .use(nib());
     }
