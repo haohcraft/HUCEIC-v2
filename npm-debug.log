@@ -1,0 +1,112 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/0.10.24/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install' ]
+2 info using npm@1.3.21
+3 info using node@v0.10.24
+4 verbose readDependencies using package.json deps
+5 verbose install where, deps [ '/Users/hhuang/Documents/NodeJS/HUCEIC-v2',
+5 verbose install   [ 'express',
+5 verbose install     'jade',
+5 verbose install     'stylus',
+5 verbose install     'nib',
+5 verbose install     'mongoskin',
+5 verbose install     'mongodb',
+5 verbose install     'express-validator' ] ]
+6 info preinstall HUCEIC-v2@0.0.1
+7 verbose readDependencies using package.json deps
+8 verbose already installed skipping stylus@~0.40.0 /Users/hhuang/Documents/NodeJS/HUCEIC-v2
+9 verbose already installed skipping express@~3.3.4 /Users/hhuang/Documents/NodeJS/HUCEIC-v2
+10 verbose already installed skipping jade@~0.35.0 /Users/hhuang/Documents/NodeJS/HUCEIC-v2
+11 verbose already installed skipping nib@~1.0.1 /Users/hhuang/Documents/NodeJS/HUCEIC-v2
+12 verbose already installed skipping mongoskin@~0.6.0 /Users/hhuang/Documents/NodeJS/HUCEIC-v2
+13 verbose already installed skipping mongodb@1.2.7 /Users/hhuang/Documents/NodeJS/HUCEIC-v2
+14 verbose cache add [ 'express-validator@~2.0.0', null ]
+15 verbose cache add name=undefined spec="express-validator@~2.0.0" args=["express-validator@~2.0.0",null]
+16 verbose parsed url { protocol: null,
+16 verbose parsed url   slashes: null,
+16 verbose parsed url   auth: null,
+16 verbose parsed url   host: null,
+16 verbose parsed url   port: null,
+16 verbose parsed url   hostname: null,
+16 verbose parsed url   hash: null,
+16 verbose parsed url   search: null,
+16 verbose parsed url   query: null,
+16 verbose parsed url   pathname: 'express-validator@~2.0.0',
+16 verbose parsed url   path: 'express-validator@~2.0.0',
+16 verbose parsed url   href: 'express-validator@~2.0.0' }
+17 verbose cache add name="express-validator" spec="~2.0.0" args=["express-validator","~2.0.0"]
+18 verbose parsed url { protocol: null,
+18 verbose parsed url   slashes: null,
+18 verbose parsed url   auth: null,
+18 verbose parsed url   host: null,
+18 verbose parsed url   port: null,
+18 verbose parsed url   hostname: null,
+18 verbose parsed url   hash: null,
+18 verbose parsed url   search: null,
+18 verbose parsed url   query: null,
+18 verbose parsed url   pathname: '~2.0.0',
+18 verbose parsed url   path: '~2.0.0',
+18 verbose parsed url   href: '~2.0.0' }
+19 verbose addNamed [ 'express-validator', '~2.0.0' ]
+20 verbose addNamed [ null, '>=2.0.0-0 <2.1.0-0' ]
+21 silly lockFile 43e3a22d-express-validator-2-0-0 express-validator@~2.0.0
+22 verbose lock express-validator@~2.0.0 /Users/hhuang/.npm/43e3a22d-express-validator-2-0-0.lock
+23 silly addNameRange { name: 'express-validator',
+23 silly addNameRange   range: '>=2.0.0-0 <2.1.0-0',
+23 silly addNameRange   hasData: false }
+24 verbose url raw express-validator
+25 verbose url resolving [ 'https://registry.npmjs.org/', './express-validator' ]
+26 verbose url resolved https://registry.npmjs.org/express-validator
+27 info trying registry request attempt 1 at 16:01:04
+28 verbose etag "BAAYC67UZHC8K6P7KUALQ4W6T"
+29 http GET https://registry.npmjs.org/express-validator
+30 http 304 https://registry.npmjs.org/express-validator
+31 silly registry.get cb [ 304,
+31 silly registry.get   { date: 'Fri, 27 Dec 2013 21:01:03 GMT',
+31 silly registry.get     server: 'Apache',
+31 silly registry.get     connection: 'Keep-Alive',
+31 silly registry.get     'keep-alive': 'timeout=10, max=50',
+31 silly registry.get     etag: '"BAAYC67UZHC8K6P7KUALQ4W6T"',
+31 silly registry.get     vary: 'Accept' } ]
+32 verbose etag express-validator from cache
+33 silly addNameRange number 2 { name: 'express-validator',
+33 silly addNameRange   range: '>=2.0.0-0 <2.1.0-0',
+33 silly addNameRange   hasData: true }
+34 silly addNameRange versions [ 'express-validator',
+34 silly addNameRange   [ '0.1.0',
+34 silly addNameRange     '0.1.1',
+34 silly addNameRange     '0.1.2',
+34 silly addNameRange     '0.1.3',
+34 silly addNameRange     '0.2.0',
+34 silly addNameRange     '0.2.1',
+34 silly addNameRange     '0.2.2',
+34 silly addNameRange     '0.2.3',
+34 silly addNameRange     '0.2.4',
+34 silly addNameRange     '0.3.0',
+34 silly addNameRange     '0.3.1',
+34 silly addNameRange     '0.3.2',
+34 silly addNameRange     '0.4.0',
+34 silly addNameRange     '0.4.1',
+34 silly addNameRange     '0.5.0',
+34 silly addNameRange     '0.6.0',
+34 silly addNameRange     '0.7.0',
+34 silly addNameRange     '0.8.0',
+34 silly addNameRange     '1.0.0',
+34 silly addNameRange     '1.0.1' ] ]
+35 silly lockFile 43e3a22d-express-validator-2-0-0 express-validator@~2.0.0
+36 silly lockFile 43e3a22d-express-validator-2-0-0 express-validator@~2.0.0
+37 error notarget No compatible version found: express-validator@'>=2.0.0-0 <2.1.0-0'
+37 error notarget Valid install targets:
+37 error notarget ["0.1.0","0.1.1","0.1.2","0.1.3","0.2.0","0.2.1","0.2.2","0.2.3","0.2.4","0.3.0","0.3.1","0.3.2","0.4.0","0.4.1","0.5.0","0.6.0","0.7.0","0.8.0","1.0.0","1.0.1"]
+37 error notarget
+37 error notarget This is most likely not a problem with npm itself.
+37 error notarget In most cases you or one of your dependencies are requesting
+37 error notarget a package version that doesn't exist.
+38 error System Darwin 12.4.0
+39 error command "/usr/local/Cellar/node/0.10.24/bin/node" "/usr/local/bin/npm" "install"
+40 error cwd /Users/hhuang/Documents/NodeJS/HUCEIC-v2
+41 error node -v v0.10.24
+42 error npm -v 1.3.21
+43 error code ETARGET
+44 verbose exit [ 1, true ]

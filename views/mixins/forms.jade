@@ -1,0 +1,32 @@
+
+//- The different mixins for the different types of form
+
+
+
+
+//- a few private mixins used for nesting
+
+
+
+
+
+//- This looks like a constructor
+mixin forms(type)
+	case type
+		when 'mailinglist-vertical'
+			// Form snippet for the mailing list
+			form#form-mailinglist-vertical(action='', method='post')
+				p
+					lable First Name
+						input(type='text', name='first_name')
+				p
+					lable Last Name
+						input(type='text', name='last_name')
+				p
+					lable Email Address
+						input(type='text', name='email')
+						input.button.do_subscribe(type='submit', name='subscribe', value='subscribe')
+
+
+
+

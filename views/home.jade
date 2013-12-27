@@ -1,11 +1,26 @@
 extends layout
 
 
-
 block content
 	// Some variables used in the jade
 	- var company = PageData.company
+	// Includes mixins
+	include mixins/forms
 
 	section#content.clearfix
 		div.container
 			h2.slogan.align-center(data-slogan=' '+ company.longName) Welcom to </br>
+
+			div.three-fourth
+				h6.section-title Latest Events
+				div.jcarousel-containter.jcarousel-containter-horizontal(style="position: relative; display: block;")
+					div.jcarousel-clip.jcarousel-clip-horizontal(style="position: relative;")
+						ul.post-carousel.clearfix.jcarousel-list.jcarousel-list-horizontal(data-scroll_count, data-scroll_count style="overflow: hidden; position: relative; top: 0px; margin: 0px; padding: 0px; left: 0px; width: 2020px;")
+					div.jcarousel-prev.jcarousel-prev-horizontal(style="display: block; background-color: rgb(241, 90, 35);")
+					div.jcarousel-next.jcarousel-next-horizontal(style="display: block; background-color: rgb(241, 90, 35);")
+			div.one-fourth.last
+				h6.section-title Mailing List
+				+forms("mailinglist-vertical")
+
+
+	

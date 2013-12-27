@@ -11,7 +11,8 @@
     "stylus": "~0.40.0",
     "nib": "~1.0.1",
     "mongoskin": "~0.6.0",
-    "mongodb": "1.2.7"
+    "mongodb": "1.2.7",
+    "express-validator": "~1.0.1"
     
   }
 }

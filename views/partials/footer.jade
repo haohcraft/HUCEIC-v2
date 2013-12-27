@@ -1,0 +1,37 @@
+// Some variables used in the jade
+- var navs = PageData.navs
+- var company = PageData.company
+- var social = company.socialMedia
+
+
+footer#footer.clearfix
+	div.container
+		div.three-fourth
+			nav#footer-nav.clearfix
+				ul
+					- navs.forEach(function(nav){
+						li
+							a(href=nav.path) #{nav.navName}
+					- })
+			ul.contact-info
+				li.address #{company.address}
+				li.email
+					a(href="mailto:#{company.email}") #{company.email}
+				li.phone #{company.phone}
+
+		div.one-fourth.last
+			span.title Stay connected
+			ul.social-links
+				li.facebook
+					a(href=social.facebook, target="_blank") Facebook
+				li.weibo
+					a(href=social.weibo) Weibo
+				li.renren
+					a(href=social.renren, target="_blank") Renren
+
+
+	if app
+		script(src='js/config.js')
+		script(src='ext/requirejs/require.js',data-main=app+'/'+app)
+			
+					

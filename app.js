@@ -4,17 +4,18 @@
  */
 
 var express = require('express')
-  , routes = require('./routes')
+  , route = require('./route')
   , http = require('http')
   , stylus = require('stylus')
   , nib = require('nib')
-  , path = require('path');
+  , path = require('path')
+  , expressValidator = require('express-validator');
 
 var app = express();
 
 app.configure(function(){
 
-  app.set('port', process.env.PORT || 3000);
+  app.set('port', process.env.PORT || 3001);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.use(express.favicon());
@@ -27,8 +28,9 @@ app.configure(function(){
         .use(nib());
     }
   }));
-
+  
   app.use(express.bodyParser());
+  app.use(expressValidator()); // this line must be immediately after express.bodyParser()!
   app.use(require("./middleware/set-pagedata"));
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
@@ -42,8 +44,8 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', require('./routes/index'));
-app.get('/about', require('./routes/about'));
+route(app);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

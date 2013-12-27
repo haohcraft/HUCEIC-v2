@@ -3,3 +3,11 @@ express --css stylus . //using jade/stylus
 
 #organize the structure of the front end page
 
+
+#Subscribe the mailing-list form
+	-	front-end: partials/form-mailinglist.jade
+	-	back-end: validation
+
+
+
+#Consolidate the route.js
