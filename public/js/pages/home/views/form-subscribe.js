@@ -4,20 +4,21 @@
 
 define([
 	'backbone',
-	'jquery-form',
-	'jquery'
+	'jquery',
+	'underscore',
+	'jquery-form'
 	],
-	function(Backbone, JForm, $){
+	function(Backbone, $, _){
 
 		var SubscribeForm = Backbone.View.extend({
 
 			isSuccess: false,
 			
-			data: {
-				'firstname':'',
-				'lastname':'',
-				'email':''
-			},
+			// data: {
+			// 	'firstname':'',
+			// 	'lastname':'',
+			// 	'email':''
+			// },
 
 			el: "#form-mailinglist-vertical",
 
@@ -31,14 +32,9 @@ define([
 
 			subscribeMailing: function(ev){
 				ev.preventDefault();
-				console.log('the .do_subscribe button has been clicked');
-				this.data.firstname = this.$el.find('first_name').val();
-				this.data.lastname = this.$el.find('last_name').val();
-				this.data.email = this.$el.find('email').val();
 				
 				this.$el.ajaxSubmit({
 					url: '/subscribe',
-					data: this.data,
 					success: this.onSuccess,
 					error: this.onError
 				});
@@ -50,8 +46,10 @@ define([
 			},
 
 			onError: function(res, status,  xhr, $form){
-				var responseText = res.responseText;
-				console.log('the form is failed: '+responseText+'//statusText: '+ status);	
+				var errors = $.parseJSON(res.responseText);
+				_.map(errors, function(error){
+					$("input[name='"+ error.param+"']").val(error.msg);
+				});
 			}
 
 		});
