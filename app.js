@@ -32,6 +32,7 @@ app.configure(function(){
   app.use(express.bodyParser());
   app.use(expressValidator()); // this line must be immediately after express.bodyParser()!
   app.use(require("./middleware/set-pagedata"));
+  app.use(require("./middleware/validator"));
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
 

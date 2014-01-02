@@ -15,7 +15,11 @@ mixin forms(type)
 	case type
 		when 'mailinglist-vertical'
 			// Form snippet for the mailing list
-			form#form-mailinglist-vertical(action='', method='post')
+			form#subscribe#form-mailinglist-vertical
+				p.error(style=" display: none; ")
+					| Something is wrong!
+				p.success(style=" display: none; ")
+					| YoY, thanks for subscribing :-)
 				p
 					lable First Name
 						input(type='text', name='first_name')

@@ -6,18 +6,24 @@
 define([
 	'backbone',
 	'jquery',
-	'home/views/form-subscribe'
+	'home/views/form-subscribe',
+	'home/views/events-list-view',
+	'home/collections/event-list'
 
-	],function(Backbone, $, SubscribeForm){
+	],function(Backbone, $, SubscribeForm, EventsListView, EventsListCollection){
 		
-		var attachViews = function(){
+		var attachViews = function(EventsListCollection){
 			// attach the subscribe form
 			new SubscribeForm();
+			new EventsListView({
+				collection: EventsListCollection
+			});
 		};
+
 
 		var Main = function(){
 			console.log('this is the main.js for the home page');
-			attachViews();
+			attachViews(EventsListCollection);
 
 		};
 

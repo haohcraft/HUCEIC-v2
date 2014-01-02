@@ -8,7 +8,8 @@
 var home = require('./routes/home'),
 	about = require('./routes/about'),
 	//For the form
-	subscribe = require('./routes/subscribe');
+	subscribe = require('./routes/api/subscribe');
+	events = require('./routes/api/events');
 
 module.exports = function(app){
 	// Home page
@@ -19,7 +20,10 @@ module.exports = function(app){
 
 
 	//Subscribe 
-	app.post('/subscribe', subscribe);
+	app.post('/api/subscribe', subscribe);
+
+	//Get Events
+	app.get('/api/events', events);
 
 
 }

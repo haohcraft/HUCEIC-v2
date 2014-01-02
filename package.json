@@ -12,7 +12,8 @@
     "nib": "~1.0.1",
     "mongoskin": "~0.6.0",
     "mongodb": "1.2.7",
-    "express-validator": "~1.0.1"
+    "express-validator": "~1.0.1",
+    "google-spreadsheets": "~0.3.0"
     
   }
 }
