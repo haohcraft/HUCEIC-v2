@@ -1,0 +1,26 @@
+extends ../layout
+
+block stylesheet
+	link(rel='stylesheet', href='/ext/pen/src/pen.css')
+
+
+block content
+	// Includes mixins
+	include ../mixins/forms
+	include ../mixins/event
+
+	section#content.clearfix
+		div.container
+
+			header.page-header.clearfix
+				h1.page-title Events
+
+			section#main
+				div#inner-content.wrap.clearfix
+					div#main.sixteencol.clearfix
+						div#events.inner-main
+							+event(admin)
+			aside#sidebar
+				div.sidebar-mailing
+					h6.section-title Mailing List
+					+forms("mailinglist-vertical")

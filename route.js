@@ -23,7 +23,11 @@ module.exports = function(app){
 	app.post('/api/subscribe', subscribe);
 
 	//Get Events
-	app.get('/api/events', events);
+	app.get('/events', events.showEventPage);
+	app.get('/api/events/:action', function(req, res){
+		var action = req.params.action;
+		events[action]();
+	});
 
 
 }

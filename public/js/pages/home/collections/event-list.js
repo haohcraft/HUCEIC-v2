@@ -7,7 +7,7 @@ define([
 
 		var EventsList = Backbone.Collection.extend({
 
-			url: '/api/events',
+			// url: '/api/events/',
 
 			initialize: function(){}
 

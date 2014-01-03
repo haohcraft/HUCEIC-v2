@@ -20,16 +20,14 @@ mixin forms(type)
 					| Something is wrong!
 				p.success(style=" display: none; ")
 					| YoY, thanks for subscribing :-)
-				p
-					lable First Name
-						input(type='text', name='first_name')
-				p
-					lable Last Name
-						input(type='text', name='last_name')
-				p
-					lable Email Address
-						input(type='text', name='email')
-						input.button.do_subscribe(type='submit', name='subscribe', value='subscribe')
+				
+				label First Name
+					input(type='text', name='first_name')
+				label Last Name
+					input(type='text', name='last_name')
+				label Email Address
+					input(type='text', name='email')
+					input.button.do_subscribe(type='submit', name='subscribe', value='subscribe')
 
 
 

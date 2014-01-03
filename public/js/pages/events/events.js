@@ -1,9 +1,9 @@
 /**
- * The bootup js for home page
+ * The bootup js for events page
  */
 require([
 	'jquery',
-	'pages/home/controllers/main'
+	'pages/events/controllers/main'
 
 	], function($, Main){
 

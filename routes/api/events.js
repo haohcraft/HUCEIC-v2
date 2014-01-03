@@ -1,13 +1,34 @@
-var EventModel = require('../../data/db/model/event');
+var EventModel = require('../../data/db/model/events');
+
+exports.showEventPage = function(req, res, next){
+	res.render('pages/events', {
+		app: 'events',
+		admin: 'haohcraft'
+	});
+};
 
 
-module.exports = function(req, res, next){
+exports.createEvent = function(req, res, next){
 
-	var resutls = EventModel.getEventsFromGoogleSheet();
+	res.render('pages/events', {
+		app: 'events',
+		admin: 'haohcraft'
+	});
 
-	console.log('eventsJS: '+ resutls);
 
-	res.send(200, 'resutls');
+};
+
+exports.saveEvent = function(req, res, next){
+	console.log('events/saveEvent');
+};
+
+exports.getAllEvents = function(req, res, next){
+	console.log('events/getAllEvents');
+};
+
+exports.getLatestEvent = function(req, res, next){
+	console.log('events/getLatestEvent');
+};
 
 
-}
+

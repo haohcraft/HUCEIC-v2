@@ -6,9 +6,9 @@
 define([
 	'backbone',
 	'jquery',
-	'home/views/form-subscribe',
-	'home/views/events-list-view',
-	'home/collections/event-list'
+	'components/form-subscribe',
+	'pages/home/views/events-list-view',
+	'pages/home/collections/event-list'
 
 	],function(Backbone, $, SubscribeForm, EventsListView, EventsListCollection){
 		

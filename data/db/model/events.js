@@ -3,18 +3,18 @@
  * @type {[type]}
  */
 var Model = require('./base'),
-	EventModel = new Model('event');
+	EventsModel = new Model('events');
 
 var GoogleSpreadsheets = require("google-spreadsheets"),
 	KEY = '0At7_MFZRuMbkdF9mMU90UG1tRS1rM2NMTW5veC1qa0E';
 
-module.exports = EventModel;
+module.exports = EventsModel;
 
 /**
  * Get the events from the google spread sheet
  * @return {[type]} [description]
  */
-EventModel.getEventsFromGoogleSheet = function(){
+EventsModel.getEventsFromGoogleSheet = function(){
 
 	GoogleSpreadsheets({
 			key: KEY
@@ -36,7 +36,7 @@ EventModel.getEventsFromGoogleSheet = function(){
  * @param  {Function} callback  [description]
  * @return {[type]}             [description]
  */
-EventModel.createNew = function(eventInfo, callback){
+EventsModel.createNew = function(eventInfo, callback){
 
 	this.insert({
 		date: eventInfo.date, 				// The date of the event, type Date
