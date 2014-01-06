@@ -4,21 +4,23 @@
 mixin event(admin)
 	if admin
 		h3 Create New Event
-		div.infobox
-			div.event-new
-				div.dash
-				div.plus
+		//- div.infobox
+		div.event-new.infobox
+			div.dash
+			//- div.plus.do_createEvent
 
-				div.event-container 
-					h2.edit.title Title:
-					h3.edit.peaker Speaker:
-					p.edit.description ...
-			div.button.do_createEvent Create
+			div.event-new-container 
+				h2.edit-area.title Title: ...
+				h3.edit-area.speaker Speaker: ...
+				h3.edit-area.type Type: ...
+				p.edit-area.description Description: ...
+			div.button.do_createEvent(contenteditable="false") Create
 	
 
-	div.event.infobox
-		div.dash
-		div.plus
-		
-		div.event-container
-			h3 old events
+	div.event-list
+		div.event.infobox
+			if admin
+				div.dash.do_deleteEvent
+			
+			div.event-container
+				//- h3 old events

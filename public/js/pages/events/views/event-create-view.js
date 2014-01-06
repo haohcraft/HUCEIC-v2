@@ -4,45 +4,66 @@ define([
 	'jquery',
 	'utils',
 	'underscore',
-	'pen-markdown' //just load
-	],function(Backbone, $, Utils, _){
+	'store',
+	'pen-markdown', //just load
+	'pubsub' //just load
+	],function(Backbone, $, Utils, _, Store){
 
 		var EventCreateView = Backbone.View.extend({
 
 			$titleField: null,
-			$speakerField: null,
-			$descriptionField: null,
+            $speakerField: null,
+            $descriptionField: null,
+            $typeField: null,
+			$newEvent: null,
 
 			Editor: null,
 
-			el: '.event-new',
+			NEW_EVENT: 'newEvent',
+
+			
 
 			events: {
 				'click .do_createEvent': 'createEvent',
+				'click .event-container': 'saveState',
 				'keyup': 'saveState'
+
 			},
 
+
 			initialize: function(){
-				// Grad the fields
-				this.grabFields();
+				
+				this.setSubscribes();
+
+				this.setField();
 				
 				// Set up text editor
 				this.setUpPen();
 
 				// Load previous data
-				this.loadState();
+				// this.loadState();
 
 				
 			},
+
+			setSubscribes: function(){
+				$.subscribe('newEvent:success', _.bind(this.onNewEventSuccess, this));
+				$.subscribe('newEvent:error', _.bind(this.onNewEventError, this));
+			},
 			/**
-			 * [grabFields description]
+			 * bindElement
 			 * @return {[type]} [description]
 			 */
-			grabFields: function(){
-				this.$titleField = this.$el.find('.title');
-				this.$speakerField = this.$el.find('.speaker');
-				this.$descriptionField = this.$el.find('.description');
+			setField: function(){
+				this.$newEvent = this.$el.find('.event-container');
+				// Using document.querySelector is necessary
+				// for Utils.getText()
+				this.$titleField = document.querySelector('.title'); 
+                this.$speakerField = document.querySelector('.speaker');
+                this.$descriptionField = document.querySelector('.description');
+                this.$typeField = document.querySelector('.type');
 			},
+
 			/**
 			 * [setUpPen description]
 			 */
@@ -52,6 +73,7 @@ define([
 				  editor: this.el, // {DOM Element} [required]
 				  class: 'event-new', // {String} class of the editor,
 				  debug: false, // {Boolean} false by default
+				  stay: false,
 				  textarea: '<textarea name="content"></textarea>', // fallback for old browsers
 				  list: [
 				    'blockquote', 'h2', 'h3', 'p', 'insertorderedlist', 'insertunorderedlist',
@@ -70,9 +92,18 @@ define([
 			createEvent: function(ev){
 				ev.preventDefault();
 
-				var titleHtml = this.$titleField.html();
-				var speakerHtml = this.$speakerField.html();
-				var descriptionHtml = this.$descriptionField.html();
+				
+
+				this.setField();
+                var newEventData = {
+					'eventData': this.$newEvent.html(),
+					'title': Utils.getText(this.$titleField),
+					'speaker': Utils.getText(this.$speakerField),
+					'type': Utils.getText(this.$typeField),
+					'description': Utils.getText(this.$descriptionField)
+				};
+
+                this.model.save(newEventData);
 
 
 			},
@@ -86,9 +117,7 @@ define([
 					return;
 				}
 
-				localStorage['title'] = this.$titleField.html();
-				localStorage['speaker'] = this.$speakerField.html();
-				localStorage['description'] = this.$descriptionField.html();
+				Store.set(this.NEW_EVENT, this.$newEvent.html());
 
 			},
 
@@ -98,17 +127,23 @@ define([
 					return;
 				}
 
-				if(localStorage['title']){
-					this.$titleField.html(localStorage['title']);
-				}		
-				if(localStorage['speaker']){
-					this.$speakerField.html(localStorage['speaker']);
-				}		
-				if(localStorage['description']){
-					this.$descriptionField.html(localStorage['description']);
+				if(Store.get(this.NEW_EVENT)){
+					this.$newEvent.html(Store.get(this.NEW_EVENT));
 				}
 
+
 			},
+
+			onNewEventSuccess: function(){
+				console.log('onNewEventSuccess');
+				Store.remove(this.NEW_EVENT);
+
+			},
+
+			onNewEventError: function(){
+				console.log('onNewEventError');
+			}
+
 
 
 		});

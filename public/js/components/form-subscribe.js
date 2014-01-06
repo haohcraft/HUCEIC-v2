@@ -6,13 +6,14 @@ define([
 	'backbone',
 	'jquery',
 	'underscore',
-	'jquery-form'
+	'jquery-form',
+	'jquery-placeholder' //just load
 	],
 	function(Backbone, $, _){
 
 		var SubscribeForm = Backbone.View.extend({
 
-			el: "#form-mailinglist-vertical",
+			el: ".form-mailinglist-vertical",
 
 			events: {
 				"click .do_subscribe": 'subscribeMailing'
@@ -27,6 +28,9 @@ define([
 
 				$error = this.$el.find('.error');
 				$success = this.$el.find('.success');
+
+				// set up placeholder
+				$('input').placeholder();
 			},
 
 			subscribeMailing: function (ev) {

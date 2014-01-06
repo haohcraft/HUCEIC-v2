@@ -383,8 +383,9 @@ input, select {
 }
 
 textarea {
-	padding: 10px;
-	resize: both;
+	/* padding: 10px; */
+	resize: vertical;
+	font-family: inherit;    font-size: inherit;
 }
 	
 	input:hover, textarea:hover, select:hover { border-color: #dedede; }

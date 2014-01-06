@@ -9,7 +9,9 @@
 		"underscore-amd":	"1.5.2",
 		"requirejs": "2.1.9",
 		"jquery-form": "3.45.0",
-		"pen": "https://github.com/sofish/pen.git"
+		"pen": "0.0.1",
+		"store": "https://github.com/marcuswestin/store.js.git",
+		"jquery-placeholder":"2.0.7"
 	}
 
 }

@@ -4,33 +4,21 @@
 @import 'style.css'
 
 /**
+ * Globally used css
+ */
+@import '../global/form.styl'
+@import '../global/button.styl'
+
+/**
  * The global definition for color
  * @type {[type]}
  */
 
 color-main-crimson = #ba0600
 
-/**
- * CSS for events page
- */
-#events
-	.dash
-		float right
-		width: 11px;
-		height: 3px;
-		background: url(/img/default-template/list-dash.png) 3px 8px;
-	.plus
-		display none
-		float right
-		width: 11px;
-		height: 11px;
-		background: url(/img/default-template/list-plus.png) 11px 11px;
+.color-crimson
+	color color-main-crimson
 
-	.event-new
-		.dash
-			display none
-		.plus
-			display block
 
 
 /**

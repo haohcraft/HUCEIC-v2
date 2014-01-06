@@ -16,3 +16,18 @@ SubscriberModel.subscribe = function(userInfo, callback){
 		created: new Date()
 	}, callback);
 };
+
+SubscriberModel.getItem = function(key, callback){
+	this.find(key).toArray(function(err, items){
+
+		if(err){
+			return res.send(500, MSG_ERROR);
+		}
+		if(items.length){
+			return res.send(201, MSG_EXIST);
+		}
+
+		callback(err, items);
+
+	});
+};

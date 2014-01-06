@@ -7,23 +7,26 @@ define([
 	'backbone',
 	'jquery',
 	'components/form-subscribe',
-	'pages/home/views/events-list-view',
-	'pages/home/collections/event-list'
+	'pages/home/views/event-carousel-view',
+	'components/collections/event-list'
 
-	],function(Backbone, $, SubscribeForm, EventsListView, EventsListCollection){
+	],function(Backbone, $, SubscribeForm, EventListView, EventListCollection){
 		
-		var attachViews = function(EventsListCollection){
+		var attachViews = function(EventListCollection){
 			// attach the subscribe form
 			new SubscribeForm();
-			new EventsListView({
-				collection: EventsListCollection
+			new EventListView({
+				el: event-list,
+				collection: new EventListCollection()
 			});
+
+			
 		};
 
 
 		var Main = function(){
 			console.log('this is the main.js for the home page');
-			attachViews(EventsListCollection);
+			attachViews(EventListCollection);
 
 		};
 

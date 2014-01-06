@@ -2,7 +2,7 @@
  * Backend for storing the subscribers
  */
 
-var SubscriberModel = require('../../data/db/model/subscriber');
+var SubscriberModelDB = require('../../data/db/model/subscriber');
 var MSG_ERROR = "Something is wrong!",
 	MSG_EXIST = "The email already exists.",
 	MSG_SUCCESS = "YoY, thanks for subscribing our newsletter!";
@@ -37,24 +37,25 @@ module.exports = function(req, res, next){
 		email: req.body.email
 	};
 
-	SubscriberModel.find({email: data.email})
-		.toArray(function(err, items){
+	SubscriberModelDB.getItem({email: data.email}, function(err, items){
+
+		if(err){
+			return res.send(500, MSG_ERROR);
+		}
+		if(items.length){
+			return res.send(201, MSG_EXIST);
+		}
+
+
+		SubscriberModelDB.subscribe(data, function(err){
 			if(err){
 				return res.send(500, MSG_ERROR);
 			}
 
-			if(items.length){
-				return res.send(201, MSG_EXIST);
-			}
+			return res.send(200, MSG_SUCCESS);
+		});
 
-			SubscriberModel.subscribe(data, function(err){
-				if(err){
-					return res.send(500, MSG_ERROR);
-				}
-
-				return res.send(200, MSG_SUCCESS);
-			});
-		})
+	});
 
 
 };

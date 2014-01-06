@@ -22,12 +22,15 @@ module.exports = function(app){
 	//Subscribe 
 	app.post('/api/subscribe', subscribe);
 
-	//Get Events
-	app.get('/events', events.showEventPage);
+	//Events
+	app.get('/events', events.eventListPage);
+	app.get('/new-event', events.newEventPage);
+	app.post('/api/events/createEvent', events.createEvent); // this should go first
 	app.get('/api/events/:action', function(req, res){
 		var action = req.params.action;
-		events[action]();
+		events[action](req, res);
 	});
+
 
 
 }

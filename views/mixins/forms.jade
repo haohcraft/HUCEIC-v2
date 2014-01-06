@@ -15,18 +15,18 @@ mixin forms(type)
 	case type
 		when 'mailinglist-vertical'
 			// Form snippet for the mailing list
-			form#subscribe#form-mailinglist-vertical
+			form#subscribe.form-mailinglist-vertical
 				p.error(style=" display: none; ")
 					| Something is wrong!
 				p.success(style=" display: none; ")
 					| YoY, thanks for subscribing :-)
 				
 				label First Name
-					input(type='text', name='first_name')
+					input(type='text', name='first_name', placeholder="e.g. Hao")
 				label Last Name
-					input(type='text', name='last_name')
+					input(type='text', name='last_name', placeholder="e.g. Huang")
 				label Email Address
-					input(type='text', name='email')
+					input(type='text', name='email', placeholder="e.g. haohcraft@gmail.com")
 					input.button.do_subscribe(type='submit', name='subscribe', value='subscribe')
 
 
