@@ -30,6 +30,7 @@ module.exports = function(app){
 		var action = req.params.action;
 		events[action](req, res);
 	});
+	app.del('/api/events/deleteEvent', events.deleteEvent);
 
 
 

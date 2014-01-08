@@ -55,7 +55,7 @@ define([
 			 * @return {[type]} [description]
 			 */
 			setField: function(){
-				this.$newEvent = this.$el.find('.event-container');
+				this.$newEvent = this.$el.find('.event-new-container');
 				// Using document.querySelector is necessary
 				// for Utils.getText()
 				this.$titleField = document.querySelector('.title'); 

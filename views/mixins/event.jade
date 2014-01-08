@@ -18,9 +18,16 @@ mixin event(admin)
 	
 
 	div.event-list
-		div.event.infobox
-			if admin
-				div.dash.do_deleteEvent
-			
-			div.event-container
-				//- h3 old events
+	
+
+
+	//-Templates 
+	script(id='template-eventlist-item',type='text/html')
+		| <div class='event infobox' data-eventId=<%=eventId%>  data-index=<%=index%>>
+		|	<% if (admin) {%>
+		| 		<div class='dash do_deleteEvent'></div>
+		|	<%}%>
+		|	<div class='event-container'  >
+		|		<%=eventData %>	
+		|	</div>
+		| </div>

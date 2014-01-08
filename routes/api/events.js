@@ -18,7 +18,7 @@ exports.newEventPage = function(req, res, next){
 };
 
 exports.createEvent = function(req, res, next){
-	console.log('events/createEvent');
+	console.log('api/events/createEvent');
 	console.log(req.body);
 	var newEvent = req.body;
 
@@ -34,7 +34,7 @@ exports.createEvent = function(req, res, next){
 };
 
 exports.getAllEvents = function(req, res, next){
-	console.log('events/getAllEvents');
+	console.log('api/events/getAllEvents');
 
 	EventModelDB.getAllEvents(function(err, events){
 		console.log('allEvents: ',  err);
@@ -48,13 +48,38 @@ exports.getAllEvents = function(req, res, next){
 };
 
 exports.getLatestEvent = function(req, res, next){
-	console.log('events/getLatestEvent');
+	console.log('api/events/getLatestEvent');
 	EventModelDB.getLatest(function(err, event){
 
 		console.log('getLatest', event, err);
 
 	});
 };
+
+exports.deleteEvent = function(req, res, next){
+	console.log('api/events/deleteEvent');
+	console.log(req.body, req.body.id);
+
+	var mongoId = req.body.id;
+
+	EventModelDB.deleteEvent(mongoId, function(err){
+
+		if (err){
+			res.send(500, err);
+		} 
+
+		res.send(200);
+	})
+};
+
+
+
+
+
+
+
+
+
 
 
 

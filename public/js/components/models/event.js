@@ -7,9 +7,6 @@ define([
 
 		var EventModel = Backbone.Model.extend({
 
-			// url: 'api/events/createEvent',
-
-
 			defaults: {
 				eventData: null,
 				title: '',
