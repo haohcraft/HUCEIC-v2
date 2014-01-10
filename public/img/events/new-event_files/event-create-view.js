@@ -6,7 +6,8 @@ define([
 	'underscore',
 	'store',
 	'pen-markdown', //just load
-	'pubsub' //just load
+	'pubsub' //just load,
+	'addresspicker'
 	],function(Backbone, $, Utils, _, Store){
 
 		var EventCreateView = Backbone.View.extend({

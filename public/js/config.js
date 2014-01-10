@@ -17,8 +17,7 @@ require = {
 		"pubsub": "../ext/pubsub/pubsub",
 		"datetimepicker": "../ext/datetimepicker/jquery.datetimepicker",
 		"addresspicker": "../ext/addresspicker/src/jquery.ui.addresspicker",
-		"jquery-ui": "../ext/addresspicker/lib/jquery-ui-1.8.7.min",
-		"google-map": "../ext/google.map/google.map"
+		"jquery-ui": "../ext/jquery.ui/dist/jquery-ui.min"
 
 	},
 
@@ -43,8 +42,13 @@ require = {
 			exports: 'datetimepicker'
 		},
 
+		'jquery-ui': {
+			deps: ['jquery'],
+			exports: 'jquery-ui'
+		},
+
 		'addresspicker': {
-			deps:['jquery', 'jquery-ui'],
+			deps:['jquery-ui'],
 			exports: 'addresspicker'
 		}
 
