@@ -1,0 +1,8 @@
+{
+  "name": "datetimepicker",
+  "version": "2.1.5",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xdan/datetimepicker.git"
+  }
+}

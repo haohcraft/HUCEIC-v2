@@ -17,7 +17,7 @@
 	{
 		"navName": "Mainling List",
 		"description":"联系",
-		"path": "/#subscribe"
+		"path": "#subscribe"
 	}
 
 ]

@@ -5,8 +5,11 @@ define([
 	'utils',
 	'underscore',
 	'store',
-	'pen-markdown', //just load
-	'pubsub' //just load
+	'jquery-form', //just load
+	'pubsub', //just load
+	'jquery-placeholder', //just load
+	'datetimepicker',
+	'addresspicker' 
 	],function(Backbone, $, Utils, _, Store){
 
 		var EventCreateView = Backbone.View.extend({
@@ -15,7 +18,11 @@ define([
             $speakerField: null,
             $descriptionField: null,
             $typeField: null,
-			$newEvent: null,
+			$dateField: null,
+			$addressField: null,
+
+
+			newEventData: null,
 
 			Editor: null,
 
@@ -36,12 +43,9 @@ define([
 				this.setSubscribes();
 
 				this.setField();
-				
-				// Set up text editor
-				this.setUpPen();
 
 				// Load previous data
-				// this.loadState();
+				this.loadState();
 
 				
 			},
@@ -55,35 +59,17 @@ define([
 			 * @return {[type]} [description]
 			 */
 			setField: function(){
-				this.$newEvent = this.$el.find('.event-new-container');
-				// Using document.querySelector is necessary
-				// for Utils.getText()
-				this.$titleField = document.querySelector('.title'); 
-                this.$speakerField = document.querySelector('.speaker');
-                this.$descriptionField = document.querySelector('.description');
-                this.$typeField = document.querySelector('.type');
+				this.$titleField = this.$el.find('input[name="title"]'); 
+                this.$speakerField = this.$el.find('input[name="speaker"]');
+                this.$descriptionField = this.$el.find('textarea[name="description"]');
+                this.$typeField = this.$el.find('input[name="type"]');
+                this.$dateField = this.$el.find('input[name="date"]');
+                this.$addressField = this.$el.find('input[name="address"]');
+                //pick a date
+                this.$dateField.datetimepicker();
+                this.$addressField.addresspicker();
 			},
 
-			/**
-			 * [setUpPen description]
-			 */
-			setUpPen: function(){
-
-				var options = {
-				  editor: this.el, // {DOM Element} [required]
-				  class: 'event-new', // {String} class of the editor,
-				  debug: false, // {Boolean} false by default
-				  stay: false,
-				  textarea: '<textarea name="content"></textarea>', // fallback for old browsers
-				  list: [
-				    'blockquote', 'h2', 'h3', 'p', 'insertorderedlist', 'insertunorderedlist',
-				    'indent', 'outdent', 'bold', 'italic', 'underline', 'createlink'
-				  ] // editor menu list
-				};
-
-				this.Editor  = new Pen(options);
-
-			},
 			/**
 			 * [createEvent description]
 			 * @param  {[type]} ev [description]
@@ -91,17 +77,6 @@ define([
 			 */
 			createEvent: function(ev){
 				ev.preventDefault();
-
-				
-
-				this.setField();
-                var newEventData = {
-					'eventData': this.$newEvent.html(),
-					'title': Utils.getText(this.$titleField),
-					'speaker': Utils.getText(this.$speakerField),
-					'type': Utils.getText(this.$typeField),
-					'description': Utils.getText(this.$descriptionField)
-				};
 
                 this.model.save(newEventData);
 
@@ -117,7 +92,16 @@ define([
 					return;
 				}
 
-				Store.set(this.NEW_EVENT, this.$newEvent.html());
+				this.newEventData = {
+					'title': this.$titleField.val(),
+					'speaker': this.$speakerField.val(),
+					'type': this.$typeField.val(),
+					'description': this.$descriptionField.val(),
+					'date': this.$dateField.val(),
+					'address': this.$addressField.val()
+				};
+
+				Store.set(this.NEW_EVENT, this.newEventData);
 
 			},
 
@@ -127,8 +111,15 @@ define([
 					return;
 				}
 
-				if(Store.get(this.NEW_EVENT)){
-					this.$newEvent.html(Store.get(this.NEW_EVENT));
+				var previousData = Store.get(this.NEW_EVENT);
+
+				if(previousData){
+
+					 
+					_.each(this.$el.find('input'), function(field){
+						var name = $(field).attr('name');
+						$(field).val(previousData[name]);
+					});
 				}
 
 

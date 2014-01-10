@@ -14,7 +14,11 @@ require = {
 		"utils":"components/utils",
 		"store":"../ext/store/store.min",
 		"jquery-placeholder":"../ext/jquery-placeholder/jquery.placeholder.min",
-		"pubsub": "../ext/pubsub/pubsub"
+		"pubsub": "../ext/pubsub/pubsub",
+		"datetimepicker": "../ext/datetimepicker/jquery.datetimepicker",
+		"addresspicker": "../ext/addresspicker/src/jquery.ui.addresspicker",
+		"jquery-ui": "../ext/addresspicker/lib/jquery-ui-1.8.7.min",
+		"google-map": "../ext/google.map/google.map"
 
 	},
 
@@ -32,7 +36,18 @@ require = {
 		'pubsub': {
 			deps: ['jquery'],
 			exports: 'pubsub'
+		},
+
+		'datetimepicker': {
+			deps: ['jquery'],
+			exports: 'datetimepicker'
+		},
+
+		'addresspicker': {
+			deps:['jquery', 'jquery-ui'],
+			exports: 'addresspicker'
 		}
+
 	}
 
 

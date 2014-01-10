@@ -18,11 +18,11 @@ module.exports = EventsModel;
 EventsModel.createEvent = function(data, callback){
 
 	this.insert({
-		eventDate: data.eventData,
 		title: data.title,
 		speaker: data.speaker,
 		type: data.type,
 		description: data.description,
+		eventDate: data.eventDate,
 		created: new Date() 
 	}, callback);
 

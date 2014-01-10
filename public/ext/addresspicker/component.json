@@ -1,0 +1,9 @@
+{
+  "name": "addresspicker",
+  "version": "0.0.0",
+  "commit": "253225b1e2793b5d9d1a66a6b84a258379e382df",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sgruhier/jquery-addresspicker.git"
+  }
+}

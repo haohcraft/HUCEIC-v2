@@ -6,7 +6,7 @@ define([
 	'backbone',
 	'jquery',
 	'underscore',
-	'jquery-form',
+	'jquery-form', //just load
 	'jquery-placeholder' //just load
 	],
 	function(Backbone, $, _){

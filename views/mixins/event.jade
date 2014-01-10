@@ -10,10 +10,18 @@ mixin event(admin)
 			//- div.plus.do_createEvent
 
 			div.event-new-container 
-				h2.edit-area.title Title: ...
-				h3.edit-area.speaker Speaker: ...
-				h3.edit-area.type Type: ...
-				p.edit-area.description Description: ...
+				div.image
+				div.edit-area.title 
+					input(type="text" placeholder="Title:" name="title")
+				div.edit-area.speaker
+					input(type="text" placeholder="Speaker:" name="speaker")
+				div.edit-area.type
+					input(type="text" placeholder="Type:" name="type")
+				div.edit-area.date
+					input(type="text" placeholder="Select a date" name="date")
+					input(type="text" placeholder="Type in a address" name="address")
+				div.edit-area.description
+					textarea(type="text" placeholder="Description:" name="description" rows="4")
 			div.button.do_createEvent(contenteditable="false") Create
 	
 
