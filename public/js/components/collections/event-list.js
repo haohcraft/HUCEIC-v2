@@ -17,8 +17,6 @@ define([
 			initialize: function(){
 
 				$.subscribe('eventCollection:delete', _.bind(this.onEventDelete, this));
-				this.fetch();
-
 			},
 
 			fetch: function(){
@@ -50,6 +48,38 @@ define([
 			onEventDeleteSucess: function(data, status, jqXHR){
 				console.log('onEventRemoveSucess', data, status);
 				$.publish('deleteEvent: success');
+
+			},
+
+			getLatest: function(){
+				$.get(
+					'api/events/getLatest',
+					_.bind(this.onGetLatest, this)
+					).fail(function(err){
+						$.publish('getLatest:error', this);	
+					});
+			},
+
+			onGetLatest: function(events){
+				console.log('onGetLatest', events.length);
+				this.reset(events);
+				this.trigger('getLatest:success', this);
+
+			},
+
+			getTop10: function(){
+				$.get(
+					'api/events/getTop10',
+					_.bind(this.onGetTop10, this)
+					).fail(function(err){
+						$.publish('getTop10:error', this);	
+					});
+			},
+
+			onGetTop10: function(events){
+				console.log('onGetTop10', events.length);
+				this.reset(events);
+				this.trigger('getTop10:success', this);
 
 			}
 

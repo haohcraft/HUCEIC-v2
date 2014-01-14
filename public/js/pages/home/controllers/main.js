@@ -12,11 +12,11 @@ define([
 
 	],function(Backbone, $, SubscribeForm, EventListView, EventListCollection){
 		
-		var attachViews = function(EventListCollection){
+		var attachViews = function(){
 			// attach the subscribe form
 			new SubscribeForm();
 			new EventListView({
-				el: event-list,
+				el: '#carousel',
 				collection: new EventListCollection()
 			});
 
@@ -26,7 +26,7 @@ define([
 
 		var Main = function(){
 			console.log('this is the main.js for the home page');
-			attachViews(EventListCollection);
+			attachViews();
 
 		};
 

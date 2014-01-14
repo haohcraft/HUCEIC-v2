@@ -14,7 +14,8 @@
 		"jquery-placeholder":"2.0.7",
 		"datetimepicker": "https://github.com/xdan/datetimepicker.git",
 		"locationpicker": "https://github.com/Logicify/jquery-locationpicker-plugin.git",
-		"jquery.ui": "git://github.com/jquery/jquery-ui.git"
+		"jquery.ui": "git://github.com/jquery/jquery-ui.git", // need to run grunt build
+		"owlCarousel": "https://github.com/OwlFonk/OwlCarousel.git"
 	}
 
 }

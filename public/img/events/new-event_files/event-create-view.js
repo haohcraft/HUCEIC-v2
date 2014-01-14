@@ -39,7 +39,7 @@ define([
 				this.setField();
 				
 				// Set up text editor
-				this.setUpPen();
+				// this.setUpPen();
 
 				// Load previous data
 				// this.loadState();

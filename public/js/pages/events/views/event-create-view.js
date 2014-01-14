@@ -20,6 +20,8 @@ define([
             $typeField: null,
 			$dateField: null,
 			$addressField: null,
+			$latField: null,
+			$lngField: null,
 
 
 			newEventData: null,
@@ -65,9 +67,19 @@ define([
                 this.$typeField = this.$el.find('input[name="type"]');
                 this.$dateField = this.$el.find('input[name="date"]');
                 this.$addressField = this.$el.find('input[name="address"]');
+                this.$latField = this.$el.find('input[name="lat"]');
+                this.$lngField = this.$el.find('input[name="lng"]');
                 //pick a date
                 this.$dateField.datetimepicker();
-                this.$addressField.addresspicker();
+
+                //pick a address
+                this.$addressField.addresspicker({
+                	elements: {
+                		lat: '.lat',
+                		lng: '.lng'
+                	}
+
+                });
 			},
 
 			/**
@@ -78,7 +90,8 @@ define([
 			createEvent: function(ev){
 				ev.preventDefault();
 
-                this.model.save(newEventData);
+				this.saveState();
+                this.model.save(this.newEventData);
 
 
 			},
@@ -87,18 +100,16 @@ define([
 			 * @return {[type]} [description]
 			 */
 			saveState: function(){
-				
-				if (!Utils.supportsHtmlStorage()){
-					return;
-				}
 
 				this.newEventData = {
-					'title': this.$titleField.val(),
-					'speaker': this.$speakerField.val(),
-					'type': this.$typeField.val(),
-					'description': this.$descriptionField.val(),
-					'date': this.$dateField.val(),
-					'address': this.$addressField.val()
+					'title': Utils.trim(this.$titleField.val()),
+					'speaker': Utils.trim(this.$speakerField.val()),
+					'type': Utils.trim(this.$typeField.val()),
+					'description': Utils.trim(this.$descriptionField.val()),
+					'date': Utils.trim(this.$dateField.val()),
+					'address': Utils.trim(this.$addressField.val()),
+					'lat': Utils.trim(this.$latField.val()),
+					'lng': Utils.trim(this.$lngField.val())
 				};
 
 				Store.set(this.NEW_EVENT, this.newEventData);
@@ -107,10 +118,6 @@ define([
 
 			loadState: function(){
 				
-				if (!Utils.supportsHtmlStorage()){
-					return;
-				}
-
 				var previousData = Store.get(this.NEW_EVENT);
 
 				if(previousData){

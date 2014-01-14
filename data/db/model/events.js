@@ -22,22 +22,32 @@ EventsModel.createEvent = function(data, callback){
 		speaker: data.speaker,
 		type: data.type,
 		description: data.description,
-		eventDate: data.eventDate,
+		eventDate: {
+			text: data.date,
+			date: new Date(data.date)
+
+		},
+		address: {
+			text: data.address,
+			lat: data.lat,
+			lng: data.lng
+		},
+		
 		created: new Date() 
 	}, callback);
 
 };
 
 EventsModel.getAllEvents = function(callback){
-	this.find({}, {sort:{"created": -1}}).toArray(callback);
+	this.find({}, {sort:{"eventDate.date": -1}}).toArray(callback);
 };
 
 EventsModel.getTop10 = function(callback){
-	this.find({},{limit: 10, sort:{"created": -1}}).toArray(callback);
+	this.find({},{limit: 10, sort:{"eventDate.date": -1}}).toArray(callback);
 };
 
 EventsModel.getLatest = function(callback){
-	this.find({},{limit: 1, sort:{"created": -1}}).toArray(callback);
+	this.find({},{limit: 1, sort:{"eventDate.date": -1}}).toArray(callback);
 };
 
 EventsModel.deleteEvent = function(_id, callback){

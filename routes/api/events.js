@@ -1,21 +1,6 @@
 var EventModelDB = require('../../data/db/model/events');
 
-exports.eventListPage = function(req, res, next){
-	res.render('pages/events', {
-		app: 'events'
-	});
-};
 
-
-exports.newEventPage = function(req, res, next){
-
-	res.render('pages/events', {
-		app: 'events',
-		admin: 'haohcraft'
-	});
-
-
-};
 
 exports.createEvent = function(req, res, next){
 	console.log('api/events/createEvent');
@@ -52,6 +37,20 @@ exports.getLatestEvent = function(req, res, next){
 	EventModelDB.getLatest(function(err, event){
 
 		console.log('getLatest', event, err);
+
+	});
+};
+
+exports.getTop10 = function(req, res, next){
+	console.log('api/events/getTop10');
+	EventModelDB.getTop10(function(err, events){
+
+		console.log('getTop10: ',  err);
+		if (err){
+			res.send(500, err);
+		} else {
+			res.send(200, events);
+		}
 
 	});
 };

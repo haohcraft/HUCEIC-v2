@@ -8,7 +8,6 @@ define([
 
 		var EventList = Backbone.View.extend({
 
-			$event: null,
 			deletedEvent: null,
 
 			tpl: _.template($('#template-eventlist-item').html()),
@@ -24,23 +23,30 @@ define([
 				$.subscribe('deleteEvent: success', _.bind(this.onEventDeleteSucess, this));
 				$.subscribe('newEvent:success', _.bind(this.onNewEventSuccess, this));
 
-				this.$event = this.$el.find('.event');
+				this.collection.fetch();
+
 			},
 
 			render: function(){
 
 				for (var i = 0; i< this.collection.length; i++){
 					var event = this.collection.at(i),
-						eventData = event.get('eventData'),
-						$eventClone = this.$event.clone();
-
-					var mongoId = event.get('_id');
+						title = event.get('title'),
+						date = event.get('eventDate'),
+						description = event.get('description'),
+						speaker = event.get('speaker'),
+						address = event.get('address').text,
+						mongoId = event.get('_id');
 
 					this.$el.append(this.tpl({
 						index: i,
 						eventId: mongoId,
-						eventData: eventData,
-						admin: "admin"
+						title: title,
+						speaker: speaker,
+						date: date.text,
+						description: description,
+						address: address,
+						admin: $('.event-new').length != 0 ? 'admin': "" //TODO: need a better logic
 					}));
 				}
 

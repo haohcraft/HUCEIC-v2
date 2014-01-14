@@ -2,7 +2,7 @@
 //- A mixin for creating a new event
 
 mixin event(admin)
-	if admin
+	if (admin == 'admin')
 		h3 Create New Event
 		//- div.infobox
 		div.event-new.infobox
@@ -20,6 +20,9 @@ mixin event(admin)
 				div.edit-area.date
 					input(type="text" placeholder="Select a date" name="date")
 					input(type="text" placeholder="Type in a address" name="address")
+				div.edit-area.geo
+					input.lat(type='text' placeholder="Latitude: 42.3770029" name='lat')
+					input.lng(type='text' placeholder="Longitude: -71.11666009999999 " name='lng')
 				div.edit-area.description
 					textarea(type="text" placeholder="Description:" name="description" rows="4")
 			div.button.do_createEvent(contenteditable="false") Create
@@ -30,12 +33,43 @@ mixin event(admin)
 
 
 	//-Templates 
-	script(id='template-eventlist-item',type='text/html')
+	script(id='template-eventlist-item',type='text/template')
 		| <div class='event infobox' data-eventId=<%=eventId%>  data-index=<%=index%>>
-		|	<% if (admin) {%>
+		|	<% if (admin == 'admin') { %>
 		| 		<div class='dash do_deleteEvent'></div>
-		|	<%}%>
-		|	<div class='event-container'  >
-		|		<%=eventData %>	
+		|	<% } %>
+		|	<div class='event-container clearfix entry'  >
+		|		<div class="entry-meta">
+		|			<ul>
+		|				<li>
+		|					<a href="#" class="eventDetail" rel="bookmark">
+		|						<span class="post-format">Detail</span>
+		|					</a>
+		|				</li>
+		|				<li>
+		|					<span class="date">
+		|						<strong>Date:</strong>
+		|					</span>
+		|					<a>
+		|						<time><%= date%></time>
+		|					</a>
+		|					<span class="address">
+		|						<strong>Location:</strong>
+		|					</span>
+		|					<a href="http://maps.google.com/?q=<%=address%>" target='_blank'><%= address%></a>
+		|				</li>
+		|			</ul>
+		|		</div>
+		|		<div class="entry-body">
+		|			<a href="#" class="eventDetail">
+		|				<h1 class="title"><%= title%></h1>
+		|			</a>
+		|			<% if(speaker != "") {%>
+		|				<p><strong>By</strong>: 
+		|					<strong><%= speaker%></strong>
+		|				</p>
+		|			<% } %>
+		|			<p class="description"><%= description%></p>
+		|		</div>
 		|	</div>
 		| </div>

@@ -17,7 +17,8 @@ require = {
 		"pubsub": "../ext/pubsub/pubsub",
 		"datetimepicker": "../ext/datetimepicker/jquery.datetimepicker",
 		"addresspicker": "../ext/addresspicker/src/jquery.ui.addresspicker",
-		"jquery-ui": "../ext/jquery.ui/dist/jquery-ui.min"
+		"jquery-ui": "../ext/jquery.ui/dist/jquery-ui.min",
+		"owlCarousel": "../ext/owlcarousel/owl.carousel"
 
 	},
 
@@ -50,6 +51,11 @@ require = {
 		'addresspicker': {
 			deps:['jquery-ui'],
 			exports: 'addresspicker'
+		},
+
+		'owlCarousel': {
+			deps: ['jquery'],
+			exports: 'owlCarousel'
 		}
 
 	}

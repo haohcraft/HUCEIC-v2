@@ -12,6 +12,8 @@ define([
 			// attach the subscribe form
 			new SubscribeForm();
 
+
+			// attach the event-create section, if possible
 			if($.find('.event-new').length != 0){
 				new EventCreateView({
 					el: '.event-new',
@@ -19,6 +21,7 @@ define([
 				});
 			}
 
+			// attach the event list section
 			new EventListView({
 				el: '.event-list',
 				collection: new EventListCollection()

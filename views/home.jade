@@ -1,23 +1,26 @@
 extends layout
 
+block stylesheet
+	link(rel='stylesheet', href='/ext/owlcarousel/owl.carousel.css')
+
 
 block content
 	// Some variables used in the jade
 	- var company = PageData.company
 	// Includes mixins
 	include mixins/forms
+	include mixins/carousel-list
+	include mixins/featured-event
 
 	section#content.clearfix
 		div.container
 			h2.slogan.align-center(data-slogan=' '+ company.longName) Welcom to </br>
+			+featured-event
 
 			div.three-fourth
 				h6.section-title Latest Events
-				div.jcarousel-containter.jcarousel-containter-horizontal(style="position: relative; display: block;")
-					div.jcarousel-clip.jcarousel-clip-horizontal(style="position: relative;")
-						ul#carousel.post-carousel.clearfix.jcarousel-list.jcarousel-list-horizontal(data-scroll_count, data-scroll_count style="overflow: hidden; position: relative; top: 0px; margin: 0px; padding: 0px; left: 0px; width: 2020px;")
-					div.jcarousel-prev.jcarousel-prev-horizontal(style="display: block; background-color: #ba0600;")
-					div.jcarousel-next.jcarousel-next-horizontal(style="display: block; background-color: #ba0600;")
+				+carousel-list
+				
 			div.one-fourth.last
 				h6.section-title Mailing List
 				+forms("mailinglist-vertical")
