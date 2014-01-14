@@ -1,0 +1,59 @@
+
+
+mixin carousel-list
+	div.jcarousel-containter(style="position: relative; display: block;")
+		div.jcarousel-clip.jcarousel-clip-horizontal(style="position: relative;")
+			div#carousel.owl-carousel.clearfix
+			//- div#carousel
+				
+
+		div.jcarousel-prev(style="display: block;")
+		div.jcarousel-next(style="display: block;")
+
+
+
+
+	//-Templates 
+	script(id='template-eventlist-horizontal-item',type='text/template')
+		| <div class="item item-<%= index%>">
+		|	 <div class='event' data-eventId=<%=eventId%>  data-index=<%=index%>>
+		|		<div class='event-container clearfix entry'  >
+		|			<div class="entry-meta">
+		|				<ul>
+		|					<li>
+		|						<a href="#" class="eventDetail" rel="bookmark">
+		|							<span class="post-format">Detail</span>
+		|						</a>
+		|					</li>
+		|					<li>
+		|						<span class="date">
+		|							<strong>Date:</strong>
+		|						</span>
+		|						<a>
+		|							<time><%= date%></time>
+		|						</a>
+		|						<span class="address">
+		|							<strong>Address:</strong>
+		|						</span>
+		|						<a href="http://maps.google.com/?q=<%=address%>" target='_blank'><%= address.substring(0,10)%></a>
+		|					</li>
+		|				</ul>
+		|			</div>
+		|			<div class="entry-body">
+		|				<a href="#" class="eventDetail">
+		|					<h1 class="title"><%= title%></h1>
+		|				</a>
+		|				<% if(speaker != "") {%>
+		|					<p><strong>By</strong>: 
+		|						<strong><%= speaker%></strong>
+		|					</p>
+		|				<% } %>
+		|				<p class="description"><%= description.substring(0, 100)%> ... 
+		|					<a><strong>MORE</strong></a>
+		|				</p>
+		|			</div>
+		|		</div>
+		|	 </div>
+		| </div>
+
+
