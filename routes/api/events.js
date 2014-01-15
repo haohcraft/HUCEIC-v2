@@ -38,6 +38,12 @@ exports.getLatestEvent = function(req, res, next){
 
 		console.log('getLatest', event, err);
 
+		if (err){
+			res.send(500, err);
+		} else {
+			res.send(200, event);
+		}
+
 	});
 };
 

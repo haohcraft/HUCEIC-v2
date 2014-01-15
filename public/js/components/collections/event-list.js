@@ -19,12 +19,42 @@ define([
 				$.subscribe('eventCollection:delete', _.bind(this.onEventDelete, this));
 			},
 
+			/**
+			 * Get all the events
+			 * @return {[type]} [description]
+			 */
 			fetch: function(){
 				$.get(
 					'api/events/getAllEvents',
 					_.bind(this.onGetAllEvents, this)
 					).fail(function(erro){
 						$.publish('getAllEvents:error', this);
+					});
+			},
+
+			/**
+			 * Get the latest event
+			 * @return {[type]} [description]
+			 */
+			getLatest: function(){
+				$.get(
+					'api/events/getLatestEvent',
+					_.bind(this.onGetLatest, this)
+					).fail(function(err){
+						$.publish('getLatest:error', this);	
+					});
+			},
+
+			/**
+			 * Get the first 10 events after sorting by the date
+			 * @return {[type]} [description]
+			 */
+			getTop10: function(){
+				$.get(
+					'api/events/getTop10',
+					_.bind(this.onGetTop10, this)
+					).fail(function(err){
+						$.publish('getTop10:error', this);	
 					});
 			},
 
@@ -51,14 +81,7 @@ define([
 
 			},
 
-			getLatest: function(){
-				$.get(
-					'api/events/getLatest',
-					_.bind(this.onGetLatest, this)
-					).fail(function(err){
-						$.publish('getLatest:error', this);	
-					});
-			},
+
 
 			onGetLatest: function(events){
 				console.log('onGetLatest', events.length);
@@ -67,14 +90,7 @@ define([
 
 			},
 
-			getTop10: function(){
-				$.get(
-					'api/events/getTop10',
-					_.bind(this.onGetTop10, this)
-					).fail(function(err){
-						$.publish('getTop10:error', this);	
-					});
-			},
+			
 
 			onGetTop10: function(events){
 				console.log('onGetTop10', events.length);

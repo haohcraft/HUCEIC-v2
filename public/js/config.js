@@ -18,7 +18,8 @@ require = {
 		"datetimepicker": "../ext/datetimepicker/jquery.datetimepicker",
 		"addresspicker": "../ext/addresspicker/src/jquery.ui.addresspicker",
 		"jquery-ui": "../ext/jquery.ui/dist/jquery-ui.min",
-		"owlCarousel": "../ext/owlcarousel/owl.carousel"
+		"owlCarousel": "../ext/owlcarousel/owl.carousel",
+		"gmap": "../ext/gmap/jquery.gmap"
 
 	},
 
@@ -56,6 +57,11 @@ require = {
 		'owlCarousel': {
 			deps: ['jquery'],
 			exports: 'owlCarousel'
+		},
+
+		'gmap': {
+			deps: ['jquery'],
+			exports: 'gmap'
 		}
 
 	}

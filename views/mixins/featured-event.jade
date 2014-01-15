@@ -1,23 +1,62 @@
 
 mixin featured-event
 	section#featuredEvent.ss-slider.show-content-onhover.fully-loaded(style="max-height: 550px; max-width: 939px;")
-		div.slide-images-container(style="max-height: 380px;")
-			img.slide-bg-image(src="img/home/audience.jpg")
-			img.slide-bg-image(src="img/home/speaker.jpg")
-			img.slide-bg-image(src="img/home/harvard_campus_pic_1.jpg")
-		div.buttons-container
-			div.slide-button
-				span.dropcap 1
-				h5 Topic
-				span.description Hao's new life
-			div.slide-button
-				span.dropcap 2
-				h5 Speaker
-				span.description Hao
-			div.slide-button
-				span.dropcap 4
-				h5 Date/Location
-				span.description Harvard University
+	
+
+
+
+
+
+
+
+
+
+	script(id="featuredEventTemplate", type='text/template')
+		| <div class="images-container" style="max-height: 380px;">
+		|	
+		| 	<div>
+		|		<img class="slide-image" src="img/home/audience.jpg" >
+		|		<div class="content-container", style="height: 18px; bottom: 200px;">
+		|			<h4> Topic: <%= topic%> </h4>
+		|		</div>
+		|	</div>
+		|	<div>
+		|		<img class="slide-image" src="img/home/speaker.jpg">
+		|		<div class="content-container",style="height: 18px; bottom: 200px;">
+		|			<h4> Speaker: <%= speaker%></h4>
+		|		</div>
+		|	</div>
+		|	<div style="width: 940px; height: 380px;">
+		|		<div id="map"></div>
+		|		<div class="content-container" style="height: 40px; bottom: 200px;">
+		|			<h4> Address: <%=address%></h4>
+		|			<h4> Date: <%=date%></h4> 
+		|		</div>
+		|	</div>
+		| </div>
+		|	
+		|		
+		| <div class="buttons-container">
+		|	<div class="slide-button", data-index="0", style="width: 33.333333333333336%; max-width: 273px;">
+		|		<span class="dropcap"> 1</span>
+		|		<h5> Topic </h5>
+		|		<span class="description"> <%= topic%> </span>
+		|	</div>
+		|	<div class="slide-button", data-index="1", style="width: 33.333333333333336%; max-width: 273px;">
+		|		<span class="dropcap"> 2</span>
+		|		<h5> Speaker</h5>
+		|		<span class='description'> <%speaker%></span>
+		|	</div>
+		|	<div class="slide-button", data-index="2", style="width: 33.333333333333336%; max-width: 273px;">
+		|		<span class="dropcap"> 3</span>
+		|		<h5> Date/Location </h5>
+		|		<span class="description">
+		|			<%= date%>
+		|			</br>
+		|			<%= address%>
+		|		</span>
+		|	</div>
+		| </div>
 
 
 

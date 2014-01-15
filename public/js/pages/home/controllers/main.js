@@ -8,15 +8,21 @@ define([
 	'jquery',
 	'components/form-subscribe',
 	'pages/home/views/event-carousel-view',
+	'pages/home/views/feature-event-view',
 	'components/collections/event-list'
 
-	],function(Backbone, $, SubscribeForm, EventListView, EventListCollection){
+	],function(Backbone, $, SubscribeForm, EventListView, FeatureEventView, EventListCollection){
 		
 		var attachViews = function(){
 			// attach the subscribe form
 			new SubscribeForm();
 			new EventListView({
 				el: '#carousel',
+				collection: new EventListCollection()
+			});
+
+			new FeatureEventView({
+				el: '#featuredEvent',
 				collection: new EventListCollection()
 			});
 
